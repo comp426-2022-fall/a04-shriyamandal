@@ -9,11 +9,6 @@ const app = express();
 const args = minimist(process.argv.slice(2));
 const port = args.port || 5000;
 
-// Requirement 2
-app.get("*",(req, res) => {
-	res.status(404).send("404 NOT FOUND");
-})
-
 // Requirement 3
 app.get('/app', (req, res) => {
     res.status(200).send('200 OK');
@@ -47,6 +42,11 @@ app.get('/app/roll/:sides/:dice/:rolls/', (req, res) => {
     const rolls = parseInt(req.params.rolls)
     res.send((roll(sides, dice,rolls)));
   })
+
+// Requirement 2
+app.get("*",(req, res) => {
+	res.status(404).send("404 NOT FOUND");
+})
 
 app.listen(port);
 
