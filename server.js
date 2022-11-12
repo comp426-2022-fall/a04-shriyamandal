@@ -14,11 +14,15 @@ app.get('/app', (req, res) => {
     res.status(200).send('200 OK');
   })
   
-// Requirement 4 and 5
+// Requirements 4 and 5
   app.get('/app/roll', (req, res) => {
-    const sides = parseInt(req.params.sides) || 6;
-    const dice = parseInt(req.params.dice) || 2;
-    const rolls = parseInt(req.params.rolls) || 1;
+    res.send(roll(6,2,1));
+  })
+
+  app.post('/app/roll', (req, res) => {
+    const sides = parseInt(req.params.sides);
+    const dice = parseInt(req.params.dice);
+    const rolls = parseInt(req.params.rolls);
     res.send(roll(sides,dice,rolls));
   })
 
